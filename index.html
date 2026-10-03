@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANKAJ.BHARDWAJ | Trade With Better Market Insights</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#0a0d14',
+                            card: '#121824',
+                            cardHover: '#182030',
+                            border: '#1e293b',
+                            green: '#00E676',
+                            greenGlow: 'rgba(0, 230, 118, 0.25)',
+                            cyan: '#00e5ff',
+                            red: '#ff5252',
+                            gold: '#ffd700'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0d14;
+            color: #f1f5f9;
+        }
+
+        .neon-glow-green {
+            box-shadow: 0 0 35px rgba(0, 230, 118, 0.25);
+        }
+
+        .neon-text-green {
+            color: #00E676;
+            text-shadow: 0 0 14px rgba(0, 230, 118, 0.45);
+        }
+
+        .glass-card {
+            background: rgba(18, 24, 36, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(30, 41, 59, 0.8);
+        }
+
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background-color: #06080e;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .ticker {
+            display: flex;
+            width: fit-content;
+            animation: ticker 25s linear infinite;
+        }
+
+        .ticker:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0d14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00E676;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0d14] text-slate-100 antialiased selection:bg-brand-green selection:text-black">
+
+    <div class="ticker-wrap text-xs font-mono py-2.5 z-50 relative">
+        <div class="ticker flex gap-8 items-center" id="tickerContent">
+            <!-- Populated dynamically via JS -->
+        </div>
+    </div>
+
+    <div class="bg-brand-card/90 border-b border-brand-border py-2.5 px-4 text-center">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 text-xs text-slate-300">
+            <i class="fa-solid fa-triangle-exclamation text-brand-gold animate-pulse"></i>
+            <span><strong>Risk Disclaimer:</strong> Trading and investing involve market risk. Always make decisions according to your own risk tolerance.</span>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-40 w-full glass-card border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#home" class="flex items-center gap-3">
+                    <div class="relative w-10 h-10 rounded-xl overflow-hidden border border-brand-green shadow-md shadow-brand-green/20 shrink-0 bg-slate-900">
+                        <img src="pankaj_4.jpeg" 
+                             alt="Pankaj Bhardwaj" 
+                             class="w-full h-full object-cover object-top"
+                             onerror="this.onerror=null; this.src='pankaj_3.jpeg'; this.setAttribute('onerror', 'this.src=\'pankaj_2.jpeg\';');">
+                    </div>
+                    <span class="text-xl font-black tracking-tight text-white">PANKAJ<span class="neon-text-green">.BHARDWAJ</span></span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-300">
+                    <a href="#about" class="hover:text-brand-green transition-colors">About Pankaj</a>
+                    <a href="#insights" class="hover:text-brand-green transition-colors">Trading Insights</a>
+                    <a href="#calculator" class="hover:text-brand-green transition-colors">Risk Calculator</a>
+                    <a href="#coverage" class="hover:text-brand-green transition-colors">Market Coverage</a>
+                    <a href="#telegram" class="hover:text-brand-green transition-colors">Telegram Community</a>
+                </div>
+
+                <div class="hidden md:flex items-center">
+                    <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="bg-brand-green hover:bg-emerald-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-brand-green/20 hover:shadow-brand-green/40 transition-all flex items-center gap-2 text-sm transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-telegram text-lg"></i> Join Telegram
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="p-2.5 rounded-xl bg-brand-card border border-brand-border text-slate-300 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden md:hidden border-t border-brand-border px-4 pt-4 pb-6 space-y-3 bg-[#0d121d]" id="mobileMenu">
+            <a href="#about" class="block px-3 py-2 rounded-lg font-medium hover:bg-brand-card text-slate-300">About Pankaj</a>
+            <a href="#insights" class="block px-3 py-2 rounded-lg font-medium hover:bg-brand-card text-slate-300">Trading Insights</a>
+            <a href="#calculator" class="block px-3 py-2 rounded-lg font-medium hover:bg-brand-card text-slate-300">Risk Calculator</a>
+            <a href="#coverage" class="block px-3 py-2 rounded-lg font-medium hover:bg-brand-card text-slate-300">Market Coverage</a>
+            <a href="#telegram" class="block px-3 py-2 rounded-lg font-medium hover:bg-brand-card text-slate-300">Telegram Community</a>
+            <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="block text-center bg-brand-green text-slate-950 font-bold px-5 py-3 rounded-xl mt-4">
+                <i class="fa-brands fa-telegram mr-2"></i> Join Telegram
+            </a>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-12 pb-20 lg:pt-20 lg:pb-28 relative overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-green/10 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+        <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-brand-cyan/10 rounded-full blur-[130px] pointer-events-none -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 px-4 py-2 rounded-full bg-brand-green/10 border border-brand-green/30 text-brand-green font-mono text-xs font-semibold uppercase tracking-wider">
+                        <span>Market Analysis</span>
+                        <span class="text-slate-500">•</span>
+                        <span>Trading Insights</span>
+                        <span class="text-slate-500">•</span>
+                        <span>Risk Management</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-white">
+                        Trade With Better <br class="hidden sm:inline"/>
+                        <span class="neon-text-green">Market Insights</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                        Market movements ko samajhne ke liye structured analysis, technical insights aur disciplined trading approach.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3">
+                        <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-brand-green text-slate-950 px-8 py-4 rounded-xl font-extrabold text-base shadow-xl shadow-brand-green/25 hover:bg-emerald-400 transition-all flex items-center justify-center gap-3 transform hover:-translate-y-0.5">
+                            <i class="fa-brands fa-telegram text-xl"></i> Join Telegram
+                        </a>
+                        <a href="#insights" class="w-full sm:w-auto text-center px-8 py-4 rounded-xl font-bold border border-brand-border bg-brand-card hover:bg-slate-800 hover:border-brand-green/50 transition-all text-slate-200">
+                            Explore Market Insights <i class="fa-solid fa-arrow-right ml-2 text-brand-green"></i>
+                        </a>
+                    </div>
+
+                    <div class="pt-6 border-t border-brand-border/60 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs font-mono text-slate-400">
+                        <span class="text-slate-500 uppercase tracking-wider">COVERAGE:</span>
+                        <span class="px-3 py-1 rounded-md bg-brand-card border border-brand-border text-slate-200">NIFTY</span>
+                        <span class="px-3 py-1 rounded-md bg-brand-card border border-brand-border text-slate-200">BANK NIFTY</span>
+                        <span class="px-3 py-1 rounded-md bg-brand-card border border-brand-border text-slate-200">EQUITY</span>
+                        <span class="px-3 py-1 rounded-md bg-brand-card border border-brand-border text-slate-200">OPTIONS</span>
+                    </div>
+
+                </div>
+
+                <!-- Hero Photo Box with image pankaj_4.jpeg -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-brand-green/20 to-brand-cyan/20 blur-xl"></div>
+                        <div class="relative glass-card p-4 sm:p-6 rounded-3xl border border-brand-border shadow-2xl text-center space-y-5">
+                            
+                            <div class="relative w-48 h-48 sm:w-56 sm:h-56 mx-auto rounded-2xl overflow-hidden border-2 border-brand-green shadow-xl shadow-brand-green/20 bg-slate-900">
+                                <img src="pankaj_4.jpeg" 
+                                     alt="Pankaj Bhardwaj Trader" 
+                                     class="w-full h-full object-cover object-top"
+                                     onerror="this.onerror=null; this.src='pankaj_3.jpeg'; this.setAttribute('onerror', 'this.src=\'pankaj_2.jpeg\';');">
+                            </div>
+
+                            <div class="space-y-1">
+                                <h3 class="text-xl font-black text-white flex items-center justify-center gap-2">
+                                    PANKAJ BHARDWAJ <i class="fa-solid fa-circle-check text-brand-green text-sm"></i>
+                                </h3>
+                                <p class="text-xs font-mono text-brand-green uppercase tracking-widest font-semibold">Trader & Market Analyst</p>
+                            </div>
+
+                            <p class="text-xs text-slate-300 bg-brand-bg p-3 rounded-xl border border-brand-border italic">
+                                "Market movements ko simple aur structured way mein understand karna hi long-term trading success ki key hai."
+                            </p>
+
+                            <a href="#telegram" class="w-full block bg-brand-card hover:bg-brand-cardHover border border-brand-border hover:border-brand-green/50 py-3 rounded-xl text-xs font-bold text-slate-200 transition-all">
+                                <i class="fa-brands fa-telegram text-brand-green mr-2"></i> Connect on Telegram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-[#0d121d] border-y border-brand-border relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm rounded-3xl overflow-hidden border border-brand-border shadow-2xl group bg-slate-900">
+                        <img src="pankaj_4.jpeg" 
+                             alt="Pankaj Bhardwaj" 
+                             class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" 
+                             onerror="this.onerror=null; this.src='pankaj_3.jpeg'; this.setAttribute('onerror', 'this.src=\'pankaj_2.jpeg\';');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent"></div>
+                        <div class="absolute bottom-5 left-5 right-5 p-4 glass-card rounded-2xl border border-brand-border">
+                            <span class="text-[10px] font-mono text-brand-green uppercase tracking-widest block font-bold">// TRADER PHILOSOPHY</span>
+                            <p class="text-xs text-slate-200 mt-1 font-medium">Disciplined risk management & structured price action analysis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-block text-xs font-mono uppercase tracking-widest text-brand-green font-bold px-3 py-1 rounded bg-brand-green/10 border border-brand-green/20">
+                        ABOUT PANKAJ BHARDWAJ
+                    </div>
+                    
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                        Meet Pankaj Bhardwaj
+                    </h2>
+
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        Pankaj Bhardwaj is a trader focused on market analysis, technical setups and disciplined risk management.
+                    </p>
+
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Yahan market trends, price action aur important market levels ko simple aur practical way mein understand karne par focus kiya jata hai.
+                    </p>
+
+                    <div class="pt-4">
+                        <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold mb-4">KEY FOCUS AREAS:</h4>
+                        
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div class="p-3 rounded-xl bg-brand-card border border-brand-border flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-brand-green/10 text-brand-green flex items-center justify-center text-sm font-bold shrink-0">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                </span>
+                                <span class="text-sm font-medium text-slate-200">Technical Market Analysis</span>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-brand-card border border-brand-border flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-brand-green/10 text-brand-green flex items-center justify-center text-sm font-bold shrink-0">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </span>
+                                <span class="text-sm font-medium text-slate-200">Price Action</span>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-brand-card border border-brand-border flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-sm font-bold shrink-0">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </span>
+                                <span class="text-sm font-medium text-slate-200">Intraday Trading Insights</span>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-brand-card border border-brand-border flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-sm font-bold shrink-0">
+                                    <i class="fa-solid fa-sliders"></i>
+                                </span>
+                                <span class="text-sm font-medium text-slate-200">Options Market Insights</span>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-brand-card border border-brand-border flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-brand-gold/10 text-brand-gold flex items-center justify-center text-sm font-bold shrink-0">
+                                    <i class="fa-solid fa-arrow-trend-up"></i>
+                                </span>
+                                <span class="text-sm font-medium text-slate-200">Market Trends</span>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-brand-card border border-brand-border flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-brand-gold/10 text-brand-gold flex items-center justify-center text-sm font-bold shrink-0">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </span>
+                                <span class="text-sm font-medium text-slate-200">Risk Management</span>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-brand-card border border-brand-border sm:col-span-2 flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm font-bold shrink-0">
+                                    <i class="fa-solid fa-brain"></i>
+                                </span>
+                                <span class="text-sm font-medium text-slate-200">Trading Psychology</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="insights" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-xs font-mono text-brand-green font-bold uppercase tracking-widest">TRADING INSIGHTS</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Understand the Market. Trade With a Plan.</h2>
+                <p class="text-slate-300 text-base leading-relaxed">
+                    Market mein har trade ke liye proper planning aur risk management important hai.
+                </p>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Pankaj.Bhardwaj platform par market-related insights aur educational information share ki jaati hai, jisse traders apni market understanding ko improve kar saken.
+                </p>
+            </div>
+
+            <div id="coverage" class="pt-4">
+                <div class="text-center mb-8">
+                    <h3 class="text-xl font-bold text-white flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bullseye text-brand-green"></i> Market Coverage
+                    </h3>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card p-6 rounded-2xl border border-brand-border hover:border-brand-green/50 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-chart-area"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">NIFTY</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Comprehensive index analysis, critical support & resistance breakout zones, and daily market trend insights.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-brand-border hover:border-brand-cyan/50 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">BANK NIFTY</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            High-volatility banking index structure tracking, momentum levels, and key intraday price action setups.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-brand-border hover:border-brand-gold/50 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Equity</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Spot market stock selection, swing trading technical charts, and institutional volume breakout insights.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-brand-border hover:border-purple-500/50 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-cubes"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Options</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Options market insights focusing on strike levels, IV behavior, and risk-managed derivative setups.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-brand-border hover:border-emerald-500/50 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-stopwatch"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Intraday Setups</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Focused intraday planning, key entry points, strictly defined risk levels, and execution discipline.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-brand-border hover:border-brand-green/50 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Market Trends</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Macro market direction, sectoral rotation trends, and multi-timeframe structural alignment analysis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="calculator" class="py-16 bg-[#0d121d] border-y border-brand-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border border-brand-border space-y-6">
+                <div class="text-center space-y-2">
+                    <span class="text-xs font-mono text-brand-green font-bold uppercase tracking-widest">// DISCIPLINED TRADING TOOL</span>
+                    <h3 class="text-2xl font-black text-white">Risk & Position Size Calculator</h3>
+                    <p class="text-xs text-slate-400">Calculate exact quantity and risk amount per trade to maintain capital preservation.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-4 text-left">
+                    <div>
+                        <label class="block text-xs font-mono text-slate-300 mb-1">Total Capital (₹)</label>
+                        <input type="number" id="calcCapital" value="100000" class="w-full bg-slate-900 border border-brand-border rounded-xl p-3 text-sm font-mono text-white focus:outline-none focus:border-brand-green">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono text-slate-300 mb-1">Risk % per Trade</label>
+                        <input type="number" id="calcRiskPct" value="1" step="0.5" class="w-full bg-slate-900 border border-brand-border rounded-xl p-3 text-sm font-mono text-white focus:outline-none focus:border-brand-green">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono text-slate-300 mb-1">Stop Loss Points (Points)</label>
+                        <input type="number" id="calcSL" value="20" class="w-full bg-slate-900 border border-brand-border rounded-xl p-3 text-sm font-mono text-white focus:outline-none focus:border-brand-green">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-brand-border flex justify-between items-center">
+                        <span class="text-xs text-slate-400 font-mono">Max Risk Amount:</span>
+                        <span class="text-lg font-black text-brand-red font-mono" id="calcMaxRisk">₹1,000</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-brand-green/30 flex justify-between items-center">
+                        <span class="text-xs text-slate-400 font-mono">Recommended Qty:</span>
+                        <span class="text-lg font-black text-brand-green font-mono" id="calcQty">50 Quantity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="telegram" class="py-20 bg-[#0a0d14] border-b border-brand-border relative overflow-hidden">
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-cyan/10 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 sm:p-12 rounded-3xl border border-brand-green/40 shadow-2xl relative overflow-hidden">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="md:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand-green/10 border border-brand-green/30 text-brand-green text-xs font-mono font-bold uppercase tracking-wider">
+                            <i class="fa-brands fa-telegram"></i> TELEGRAM COMMUNITY
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Get Trading Insights on Telegram</h2>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Daily market-related updates, analysis aur important trading information ke liye Telegram community join karein.
+                        </p>
+
+                        <div class="space-y-3 pt-2">
+                            <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold mb-2">WHAT YOU CAN FIND:</h4>
+                            
+                            <div class="grid sm:grid-cols-2 gap-2 text-sm text-slate-200">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-brand-green font-bold">✓</span>
+                                    <span>Market Updates</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-brand-green font-bold">✓</span>
+                                    <span>Technical Analysis</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-brand-green font-bold">✓</span>
+                                    <span>Important Levels</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-brand-green font-bold">✓</span>
+                                    <span>Trading Insights</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-brand-green font-bold">✓</span>
+                                    <span>Market Trends</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-brand-green font-bold">✓</span>
+                                    <span>Risk Management Information</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4">
+                            <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-brand-green text-slate-950 font-black px-8 py-4 rounded-xl text-base shadow-xl shadow-brand-green/25 hover:bg-emerald-400 transition-all transform hover:-translate-y-0.5">
+                                Join Pankaj.Bhardwaj on Telegram <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-5 flex justify-center">
+                        <div class="text-center p-8 rounded-2xl bg-brand-bg/80 border border-brand-border w-full max-w-xs space-y-4">
+                            <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-brand-green mx-auto shadow-lg shadow-brand-green/20 bg-slate-900">
+                                <img src="pankaj_4.jpeg" 
+                                     alt="Pankaj Bhardwaj Telegram" 
+                                     class="w-full h-full object-cover object-top"
+                                     onerror="this.onerror=null; this.src='pankaj_3.jpeg'; this.setAttribute('onerror', 'this.src=\'pankaj_2.jpeg\';');">
+                            </div>
+                            <div>
+                                <h3 class="font-black text-white text-lg">PANKAJ.BHARDWAJ</h3>
+                                <p class="text-xs text-slate-400 font-mono mt-1">Official Market Channel</p>
+                            </div>
+                            <div class="py-2 px-3 bg-brand-card rounded-lg text-xs text-brand-green font-mono border border-brand-border font-bold">
+                                🟢 ACTIVE COMMUNITY
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-brand-border py-12 bg-[#06080e]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <a href="#home" class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg overflow-hidden border border-brand-green shrink-0 bg-slate-900">
+                        <img src="pankaj_4.jpeg" 
+                             alt="Pankaj Bhardwaj Avatar" 
+                             class="w-full h-full object-cover object-top"
+                             onerror="this.onerror=null; this.src='pankaj_3.jpeg'; this.setAttribute('onerror', 'this.src=\'pankaj_2.jpeg\';');">
+                    </div>
+                    <span class="text-lg font-black tracking-tight text-white">PANKAJ<span class="neon-text-green">.BHARDWAJ</span></span>
+                </a>
+
+                <div class="flex flex-wrap items-center gap-6 text-xs text-slate-400 font-medium">
+                    <a href="#about" class="hover:text-brand-green transition-colors">About</a>
+                    <a href="#insights" class="hover:text-brand-green transition-colors">Trading Insights</a>
+                    <a href="#coverage" class="hover:text-brand-green transition-colors">Market Coverage</a>
+                    <a href="#telegram" class="hover:text-brand-green transition-colors">Telegram</a>
+                </div>
+
+                <div class="flex items-center gap-4 text-slate-400 text-base">
+                    <a href="https://t.me" target="_blank" class="hover:text-brand-green transition-colors"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://youtube.com" target="_blank" class="hover:text-brand-red transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://twitter.com" target="_blank" class="hover:text-brand-cyan transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-brand-border/60 text-center space-y-3">
+                <p class="text-xs text-slate-500 max-w-3xl mx-auto leading-relaxed">
+                    <strong>Trading and investing involve market risk. Always make decisions according to your own risk tolerance.</strong> Content shared by Pankaj.Bhardwaj is strictly for educational and technical market informational purposes.
+                </p>
+                <p class="text-[11px] font-mono text-slate-600">
+                    &copy; <span id="year"></span> PANKAJ.BHARDWAJ. All rights reserved.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const tickers = [
+            { sym: "NIFTY 50", price: "24,850.40", chg: "+1.25%", up: true },
+            { sym: "BANKNIFTY", price: "52,410.15", chg: "+0.85%", up: true },
+            { sym: "FINNIFTY", price: "23,120.60", chg: "+0.95%", up: true },
+            { sym: "RELIANCE", price: "₹2,980.50", chg: "+1.10%", up: true },
+            { sym: "HDFC BANK", price: "₹1,640.25", chg: "-0.30%", up: false },
+            { sym: "ICICI BANK", price: "₹1,210.80", chg: "+1.40%", up: true },
+            { sym: "TATA MOTORS", price: "₹985.20", chg: "+2.15%", up: true }
+        ];
+
+        function renderTicker() {
+            const container = document.getElementById('tickerContent');
+            let html = '';
+            for (let i = 0; i < 2; i++) {
+                tickers.forEach(t => {
+                    const colorClass = t.up ? 'text-brand-green' : 'text-brand-red';
+                    const icon = t.up ? 'fa-caret-up' : 'fa-caret-down';
+                    html += `
+                        <div class="flex items-center gap-2 whitespace-nowrap px-4 border-r border-brand-border">
+                            <span class="text-slate-300 font-bold">${t.sym}</span>
+                            <span class="text-white">${t.price}</span>
+                            <span class="${colorClass} flex items-center gap-1 font-bold">
+                                <i class="fa-solid ${icon}"></i> ${t.chg}
+                            </span>
+                        </div>
+                    `;
+                });
+            }
+            container.innerHTML = html;
+        }
+        renderTicker();
+
+        // Calculator Logic
+        function updateCalc() {
+            const capital = parseFloat(document.getElementById('calcCapital').value) || 0;
+            const riskPct = parseFloat(document.getElementById('calcRiskPct').value) || 0;
+            const slPoints = parseFloat(document.getElementById('calcSL').value) || 1;
+
+            const maxRisk = (capital * riskPct) / 100;
+            const qty = Math.floor(maxRisk / slPoints);
+
+            document.getElementById('calcMaxRisk').textContent = '₹' + maxRisk.toLocaleString('en-IN');
+            document.getElementById('calcQty').textContent = qty > 0 ? qty + ' Qty' : '0 Qty';
+        }
+
+        document.getElementById('calcCapital').addEventListener('input', updateCalc);
+        document.getElementById('calcRiskPct').addEventListener('input', updateCalc);
+        document.getElementById('calcSL').addEventListener('input', updateCalc);
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-xmark');
+        });
+    </script>
+</body>
+</html>
